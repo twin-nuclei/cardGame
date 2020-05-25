@@ -3,5 +3,6 @@ import { createCardOverview } from "./modules/overview.js";
 import {createControls} from "./modules/controls.js";
 
 
+createCardOverview(cards)
 createControls();
-createCardOverview(cards);
+

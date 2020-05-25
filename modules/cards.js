@@ -1,21 +1,17 @@
 import {displayInDetailView} from "./details.js";
 
-const players = [
-    {"realName": "Brianna Forbes", "playerName": "Dreamlurk The Unstoppable", "asset": "Foghammer Lead"},
-    {"realName": "Darcy Candice Ball", "playerName": "Crystaldash", "asset": "Secret Glowquake Gold"},
-    {"realName": "Hillary Gibbs", "playerName": "Speedsoul", "asset": "Shifting Rainshadow Iron"},
-    {"realName": "Elva Becky Hammond", "playerName": "Seekvenom The Mystic", "asset": "Valkyries' Opal Adamant"},
-    {"realName": "Enid Rose", "playerName": "Coincurse The Ghoul", "asset": "Jewelevil Bronze Of Goddesses"},
-    {"realName": "Esmeralda Carrillo", "playerName": "Skulldart", "asset": "Yellow Orichalcum Of Paladins"},
-];
 
-const dataAllCards = players.map((player, id) => ({
-        'id': id,
-        'realName': player.realName,
-        'playerName': player.playerName,
-        'asset': player.asset,
-    })
-);
+const url = 'players.json';
+
+function mapCards (players) {
+    return players.map((player, id) => ({
+            'id': id,
+            'realName': player.realName,
+            'playerName': player.playerName,
+            'asset': player.asset,
+        })
+    )
+}
 
 function createCard(cardData) {
     let card = document.createElement('div');
@@ -46,6 +42,26 @@ function createCards(dataAllCards) {
     return cards;
 }
 
-const cards = createCards(dataAllCards);
+function getCardData() {
+    return new Promise( function (resolve, reject) {
+        let request = new XMLHttpRequest();
+        request.open('GET', url);
+        request.onload = () => resolve(JSON.parse(request.responseText));
+        request.onerror = () => reject(request.response)
+        request.responseType = 'text';
+        request.send();
+
+    })
+}
+
+async function createAllCards() {
+    return await getCardData()
+        .then(cardData => mapCards(cardData))
+        .then(mappedCards => createCards(mappedCards))
+        .then(result => result)
+        .catch(err => console.log(err));
+}
+
+const cards = createAllCards();
 
 export { cards };
