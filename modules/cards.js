@@ -6,9 +6,7 @@ const url = 'players.json';
 function mapCards (players) {
     return players.map((player, id) => ({
             'id': id,
-            'realName': player.realName,
-            'playerName': player.playerName,
-            'asset': player.asset,
+            ...player
         })
     )
 }
@@ -26,20 +24,16 @@ function addCardContent(card, cardData) {
         let element = document.createElement('p');
         if (prop !== 'id') {
             element.innerHTML = prop + ': ' + cardData[prop];
-            card[prop] = cardData[prop];
+            card.prop = cardData.prop;
         }
         element.className = 'cardElement';
-        card.id = cardData['id'];
+        card.id = cardData.id;
         card.appendChild(element);
     }
 }
 
 function createCards(dataAllCards) {
-    let cards = [];
-    for (let i = 0; i < dataAllCards.length; i++) {
-        cards.push(createCard(dataAllCards[i]));
-    }
-    return cards;
+    return dataAllCards.map(data => createCard(data));
 }
 
 function getCardData() {
@@ -50,7 +44,6 @@ function getCardData() {
         request.onerror = () => reject(request.response)
         request.responseType = 'text';
         request.send();
-
     })
 }
 

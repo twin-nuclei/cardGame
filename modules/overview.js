@@ -4,9 +4,7 @@ function createCardOverview(cards) {
     while (overview.hasChildNodes()) {
         overview.removeChild(overview.firstChild);
     }
-    for (let i = 0; i < cards.length; i++) {
-        overview.appendChild(cards[i]);
-    }
+    cards.forEach(card => overview.appendChild(card));
 }
 
 
