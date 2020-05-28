@@ -31,7 +31,7 @@ function addCardContent(card, cardData) {
         let element = document.createElement('p');
         if (prop !== 'id') {
             element.innerHTML = prop + ': ' + cardData[prop];
-            card.prop = cardData.prop;
+            card[prop] = cardData[prop];
         }
         element.className = 'cardElement';
         card.id = cardData.id;
@@ -40,7 +40,6 @@ function addCardContent(card, cardData) {
 }
 
 function createCards(dataAllCards) {
-    console.log(typeof dataAllCards);
     return dataAllCards.map(data => createCard(data));
 }
 
