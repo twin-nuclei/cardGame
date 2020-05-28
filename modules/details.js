@@ -1,4 +1,4 @@
-import { cards } from "./cards.js";
+import { createCard } from "./cards.js";
 
 
 function displayInDetailView(event) {
@@ -6,8 +6,10 @@ function displayInDetailView(event) {
     while (details.hasChildNodes()) {
         details.removeChild(details.firstChild);
     }
+    let cards = JSON.parse(sessionStorage.getItem('dataAllCards'))
     let card = cards.filter(item => item.id.toString() === event.currentTarget.id);
-    let cardCopy = card[0].cloneNode(true);
+    let cardCopy = createCard(card[0]);
+    cardCopy.id = cards.length + 1;
     details.appendChild(cardCopy);
 }
 

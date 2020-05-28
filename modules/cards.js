@@ -3,7 +3,14 @@ import {displayInDetailView} from "./details.js";
 
 const url = 'players.json';
 
-function mapCards (players) {
+
+async function getCardData() { return await requestCardData() }
+
+function saveToSession(dataAllCards) {
+    sessionStorage.setItem('dataAllCards', JSON.stringify(dataAllCards));
+}
+
+function addIdToCardData (players) {
     return players.map((player, id) => ({
             'id': id,
             ...player
@@ -33,10 +40,11 @@ function addCardContent(card, cardData) {
 }
 
 function createCards(dataAllCards) {
+    console.log(typeof dataAllCards);
     return dataAllCards.map(data => createCard(data));
 }
 
-function getCardData() {
+function requestCardData() {
     return new Promise( function (resolve, reject) {
         let request = new XMLHttpRequest();
         request.open('GET', url);
@@ -47,14 +55,12 @@ function getCardData() {
     })
 }
 
-async function createAllCards() {
-    return await getCardData()
-        .then(cardData => mapCards(cardData))
-        .then(mappedCards => createCards(mappedCards))
-        .then(result => result)
-        .catch(err => console.log(err));
+function getAndSaveCardDataToSession() {
+    getCardData()
+        .then(dataAllCards => addIdToCardData(dataAllCards))
+        //todo: ich dachte ich muss hier json.strinify benutzen, wenn ich das aber mache, bekomm ich später nach
+        // json.parse wieder einen string zurück. Muss das nicht serialisiert werden, um es in der session zu speichern?
+        .then(dataAllCards => saveToSession(dataAllCards));
 }
 
-const cards = createAllCards();
-
-export { cards };
+export { createCard, createCards, getAndSaveCardDataToSession };

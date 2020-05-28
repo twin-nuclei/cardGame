@@ -1,4 +1,4 @@
-import {cards} from "./cards.js";
+import { cards } from "../main.js";
 import {createCardOverview} from "./overview.js";
 
 function createControls() {
