@@ -1,7 +1,9 @@
-import { cards } from "../main.js";
 import {createCardOverview} from "./overview.js";
 
-function createControls() {
+let cardElements;
+
+function createControls(cards) {
+    cardElements = cards;
     let parent = document.getElementById('controls');
     let ascendingButton = createAscendingButton();
     let descendingButton = createDescendingButton();
@@ -40,11 +42,12 @@ function createOverviewAscending() {
 }
 
 function createOverViewDescending() {
+
     createCardOverview(sortDescending());
 }
 
 function sortAscending() {
-    return cards.slice().sort(compare);
+    return cardElements.slice().sort(compare);
 }
 
 function sortDescending() {

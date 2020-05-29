@@ -27,10 +27,18 @@ button {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.card {
+.card, .cardCopy {
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
     background-color: rgb(207,232,220);
     border: 2px solid rgb(79,185,227);
+}
+
+.selected {
+    border: 2px solid rgb(249, 96, 72);
+}
+
+.card:hover {
+    background-color: rgb(145, 208, 247);
 }

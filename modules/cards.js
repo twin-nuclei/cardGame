@@ -1,4 +1,5 @@
 import {displayInDetailView} from "./details.js";
+import {markSelectedCardAndRefreshOverview} from "./overview.js";
 
 
 const url = 'players.json';
@@ -22,9 +23,10 @@ function createCard(cardData) {
     let card = document.createElement('div');
     card.className = 'card';
     addCardContent(card, cardData);
-    card.onclick = displayInDetailView;
+    card.onclick = event => { displayInDetailView(event); markSelectedCardAndRefreshOverview(event)};
     return card;
 }
+
 
 function addCardContent(card, cardData) {
     for (let prop in cardData) {
@@ -54,8 +56,8 @@ function requestCardData() {
     })
 }
 
-function getAndSaveCardDataToSession() {
-    getCardData()
+async function getAndSaveCardDataToSession() {
+    return await getCardData()
         .then(dataAllCards => addIdToCardData(dataAllCards))
         //todo: ich dachte ich muss hier json.strinify benutzen, wenn ich das aber mache, bekomm ich später nach
         // json.parse wieder einen string zurück. Muss das nicht serialisiert werden, um es in der session zu speichern?
