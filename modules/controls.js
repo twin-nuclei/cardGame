@@ -55,7 +55,18 @@ function sortDescending() {
 }
 
 function submit() {
-    return true;
+    let selectedCardId = sessionStorage.getItem('selectedCardId');
+    let allCardsData = JSON.parse(sessionStorage.getItem('dataAllCards'));
+    let selectedCardData = allCardsData.filter(card => card.id.toString() === selectedCardId);
+    let init = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(selectedCardData)
+    }
+    let response = fetch('localhost:8080/card', init)
+        .then(resp => resp.json())
+        .then(data => console.log('Success: ', data))
+        .catch(error => console.log('Error: ', error))
 }
 
 function compare(a ,b) {
