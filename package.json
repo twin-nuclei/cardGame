@@ -1,0 +1,23 @@
+{
+  "name": "card-game",
+  "version": "1.0.0",
+  "description": "just play it",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twin-nuclei/cardGame.git"
+  },
+  "keywords": [
+    "npm",
+    "card-game"
+  ],
+  "author": "Philipp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/twin-nuclei/cardGame/issues"
+  },
+  "homepage": "https://github.com/twin-nuclei/cardGame#readme"
+}
