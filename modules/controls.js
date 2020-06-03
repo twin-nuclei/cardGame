@@ -85,10 +85,9 @@ function submitModal(response) {
     var test = response.status;
     if (response.status === 201) {
         var messageText = 'Your card was successfully submitted.'
-    } if (response.status === 400) {
+    } else if (response.status === 400) {
         var messageText = 'You did not select a card yet. Please select a card'
     }
-
     else {
         var messageText = 'An error occured, please try again later.'
     }
