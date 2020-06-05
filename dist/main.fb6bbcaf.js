@@ -157,14 +157,14 @@ var cards;
 
 function createCardOverview(allCards) {
   cards = allCards;
-  var overview = document.getElementById('overview');
+  var overview = document.getElementsByClassName('overview-row');
 
-  while (overview.hasChildNodes()) {
-    overview.removeChild(overview.firstChild);
+  while (overview[0].hasChildNodes()) {
+    overview[0].removeChild(overview.firstChild);
   }
 
   cards.forEach(function (card) {
-    return overview.appendChild(card);
+    return overview[0].appendChild(card);
   });
 }
 
@@ -238,7 +238,7 @@ function addIdToCardData(players) {
 
 function createCard(cardData) {
   var card = document.createElement('div');
-  card.className = 'card';
+  card.className = 'card col';
   addCardContent(card, cardData);
 
   card.onclick = function (event) {

@@ -4,11 +4,11 @@ let cards;
 
 function createCardOverview(allCards) {
     cards = allCards;
-    let overview = document.getElementById('overview');
-    while (overview.hasChildNodes()) {
-        overview.removeChild(overview.firstChild);
+    let overview = document.getElementsByClassName('overview-row');
+    while (overview[0].hasChildNodes()) {
+        overview[0].removeChild(overview.firstChild);
     }
-    cards.forEach(card => overview.appendChild(card));
+    cards.forEach(card => overview[0].appendChild(card));
 }
 
 function markSelectedCardAndRefreshOverview(event) {

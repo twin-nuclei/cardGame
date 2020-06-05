@@ -24,7 +24,7 @@ function addIdToCardData (players) {
 
 function createCard(cardData) {
     let card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card col';
     addCardContent(card, cardData);
     card.onclick = event => { displayInDetailView(event); markSelectedCardAndRefreshOverview(event)};
     return card;
