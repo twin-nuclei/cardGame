@@ -9,22 +9,11 @@ button {
   padding: 15px 32px;
 }
 
-#main {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 20px;
-}
-
-.first_level_container {
+.first_level_box {
   border-radius: 5px;
   padding: 10px;
   background-color: #cfe8dc;
   border: 2px solid #4fb9e3;
-}
-
-#overview {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .card, .cardCopy {
