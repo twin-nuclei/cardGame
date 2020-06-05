@@ -2,13 +2,21 @@
   "name": "card-game",
   "version": "1.0.0",
   "description": "just play it",
-  "main": "main.js",
+  "main": "src/js/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "npm run clean && parcel --no-cache ./src/index.html",
+    "build": "NODE_ENV=production npm run clean && parcel build --public-url . --no-cache ./src/index.html",
+    "postbuild": "cp -r src/assets/* dist/",
+    "clean": "rm -rf ./dist 2> /dev/null && rm -rf ./.cache 2> /dev/null"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/twin-nuclei/cardGame.git"
+  },
+  "staticFiles": {
+    "staticPath": "src/assets",
+    "staticOutDir": "assets"
   },
   "keywords": [
     "npm",
@@ -19,5 +27,13 @@
   "bugs": {
     "url": "https://github.com/twin-nuclei/cardGame/issues"
   },
-  "homepage": "https://github.com/twin-nuclei/cardGame#readme"
+  "homepage": "https://github.com/twin-nuclei/cardGame#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap": "^4.5.0",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-html": "git+https://github.com/BernhardBehrendt/parcel-plugin-html.git#master",
+    "posthtml-include": "^1.4.3",
+    "sass": "^1.26.8"
+  }
 }
