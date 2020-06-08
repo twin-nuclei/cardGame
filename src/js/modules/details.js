@@ -11,7 +11,7 @@ function displayInDetailView(event) {
     selectedCard = cards.filter(item => item.id.toString() === event.currentTarget.id);
     let cardCopy = createCard(selectedCard[0]);
     cardCopy.id = cards.length + 1;
-    cardCopy.className = 'cardCopy border border-primary rounded';
+    cardCopy.className = 'cardCopy card col-12 border border-primary rounded';
     details.appendChild(cardCopy);
 }
 

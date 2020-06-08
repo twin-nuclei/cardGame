@@ -142,7 +142,7 @@ function displayInDetailView(event) {
   });
   var cardCopy = (0, _cards.createCard)(selectedCard[0]);
   cardCopy.id = cards.length + 1;
-  cardCopy.className = 'cardCopy border border-primary rounded';
+  cardCopy.className = 'cardCopy card col-12 border border-primary rounded';
   details.appendChild(cardCopy);
 }
 },{"./cards.js":"js/modules/cards.js"}],"js/modules/overview.js":[function(require,module,exports) {
@@ -158,24 +158,22 @@ var cards;
 function createCardOverview(allCards) {
   cards = allCards;
   var overview = document.getElementsByClassName('overview-row');
-
-  while (overview[0].hasChildNodes()) {
-    overview[0].removeChild(overview.firstChild);
-  }
-
-  cards.forEach(function (card) {
-    return overview[0].appendChild(card);
+  overview[0].innerHTML = '';
+  requestAnimationFrame(function () {
+    cards.forEach(function (card) {
+      return overview[0].appendChild(card);
+    });
   });
 }
 
 function markSelectedCardAndRefreshOverview(event) {
   if (sessionStorage.getItem('selectedCardId')) {
     var previousSelectedCard = document.getElementById(sessionStorage.getItem('selectedCardId'));
-    previousSelectedCard.className = 'card col-sm m-1 border border-primary rounded';
+    previousSelectedCard.className = 'card card card col-4 border border-primary rounded';
   }
 
   var selectedCard = document.getElementById(event.currentTarget.id);
-  selectedCard.className = 'card col-sm m-1 border border-warning rounded';
+  selectedCard.className = 'card card col-4 border border-primary rounded';
   sessionStorage.setItem('selectedCardId', event.currentTarget.id);
 }
 },{}],"js/modules/cards.js":[function(require,module,exports) {
@@ -238,7 +236,7 @@ function addIdToCardData(players) {
 
 function createCard(cardData) {
   var card = document.createElement('div');
-  card.className = 'card col-4 m-1 border border-primary rounded';
+  card.className = 'card col-4 border border-primary rounded';
   addCardContent(card, cardData);
 
   card.onclick = function (event) {
@@ -331,6 +329,7 @@ function createControls(cards) {
 
 function createAscendingButton() {
   var button = document.createElement('button');
+  button.className = 'btn btn-secondary';
   button.innerHTML = "Sort Ascending";
   button.id = "sortAsc";
   button.onclick = createOverviewAscending;
@@ -339,6 +338,7 @@ function createAscendingButton() {
 
 function createDescendingButton() {
   var button = document.createElement('button');
+  button.className = 'btn btn-secondary';
   button.innerHTML = "Sort Descending";
   button.id = "sortDesc";
   button.onclick = createOverViewDescending;
@@ -347,6 +347,7 @@ function createDescendingButton() {
 
 function createSubmitButton() {
   var button = document.createElement('button');
+  button.className = 'btn btn-danger';
   button.innerHTML = "Submit";
   button.id = "submit";
   button.onclick = submit;

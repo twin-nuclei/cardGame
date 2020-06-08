@@ -15,6 +15,7 @@ function createControls(cards) {
 
 function createAscendingButton() {
     let button = document.createElement('button');
+    button.className = 'btn btn-secondary';
     button.innerHTML = "Sort Ascending";
     button.id = "sortAsc";
     button.onclick = createOverviewAscending;
@@ -23,6 +24,7 @@ function createAscendingButton() {
 
 function createDescendingButton() {
     let button = document.createElement('button');
+    button.className = 'btn btn-secondary';
     button.innerHTML = "Sort Descending";
     button.id = "sortDesc";
     button.onclick = createOverViewDescending;
@@ -31,6 +33,7 @@ function createDescendingButton() {
 
 function createSubmitButton() {
     let button = document.createElement('button');
+    button.className = 'btn btn-danger';
     button.innerHTML = "Submit";
     button.id = "submit";
     button.onclick = submit;
