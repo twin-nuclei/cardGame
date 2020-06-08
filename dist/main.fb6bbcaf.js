@@ -131,18 +131,17 @@ var selectedCard;
 
 function displayInDetailView(event) {
   var details = document.getElementById('details');
-
-  while (details.hasChildNodes()) {
-    details.removeChild(details.firstChild);
-  }
-
+  details.innerText = '';
   var cards = JSON.parse(sessionStorage.getItem('dataAllCards'));
   selectedCard = cards.filter(function (item) {
     return item.id.toString() === event.currentTarget.id;
   });
   var cardCopy = (0, _cards.createCard)(selectedCard[0]);
+
+  cardCopy.onclick = function () {};
+
   cardCopy.id = cards.length + 1;
-  cardCopy.className = 'cardCopy card col-12 border border-primary rounded';
+  cardCopy.className = 'cardCopy card-body col-12 border border-primary rounded';
   details.appendChild(cardCopy);
 }
 },{"./cards.js":"js/modules/cards.js"}],"js/modules/overview.js":[function(require,module,exports) {
@@ -248,17 +247,20 @@ function createCard(cardData) {
 }
 
 function addCardContent(card, cardData) {
-  for (var prop in cardData) {
-    var element = document.createElement('p');
+  var listGroup = document.createElement('ul');
+  listGroup.className = 'list-group list-group-flush';
+  card.appendChild(listGroup);
 
+  for (var prop in cardData) {
     if (prop !== 'id') {
+      var element = document.createElement('li');
       element.innerHTML = prop + ': ' + cardData[prop];
       card[prop] = cardData[prop];
+      element.className = 'cardElement list-group-item';
+      listGroup.appendChild(element);
     }
 
-    element.className = 'cardElement';
     card.id = cardData.id;
-    card.appendChild(element);
   }
 }
 

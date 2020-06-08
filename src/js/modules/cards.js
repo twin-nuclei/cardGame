@@ -32,15 +32,18 @@ function createCard(cardData) {
 
 
 function addCardContent(card, cardData) {
+    let listGroup = document.createElement('ul');
+    listGroup.className = 'list-group list-group-flush';
+    card.appendChild(listGroup);
     for (let prop in cardData) {
-        let element = document.createElement('p');
         if (prop !== 'id') {
+            let element = document.createElement('li');
             element.innerHTML = prop + ': ' + cardData[prop];
             card[prop] = cardData[prop];
+            element.className = 'cardElement list-group-item';
+            listGroup.appendChild(element);
         }
-        element.className = 'cardElement';
         card.id = cardData.id;
-        card.appendChild(element);
     }
 }
 
