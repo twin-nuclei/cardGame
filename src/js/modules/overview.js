@@ -14,10 +14,10 @@ function createCardOverview(allCards) {
 function markSelectedCardAndRefreshOverview(event) {
     if (sessionStorage.getItem('selectedCardId')) {
         let previousSelectedCard = document.getElementById(sessionStorage.getItem('selectedCardId'))
-        previousSelectedCard.className = 'card col border border-primary rounded';
+        previousSelectedCard.className = 'card col-sm m-1 border border-primary rounded';
     }
     let selectedCard = document.getElementById(event.currentTarget.id);
-    selectedCard.className = 'card col border border-warning rounded';
+    selectedCard.className = 'card col-sm m-1 border border-warning rounded';
     sessionStorage.setItem('selectedCardId', event.currentTarget.id);
 }
 
