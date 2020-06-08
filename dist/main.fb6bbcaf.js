@@ -142,7 +142,7 @@ function displayInDetailView(event) {
   });
   var cardCopy = (0, _cards.createCard)(selectedCard[0]);
   cardCopy.id = cards.length + 1;
-  cardCopy.className = 'cardCopy';
+  cardCopy.className = 'cardCopy border border-primary rounded';
   details.appendChild(cardCopy);
 }
 },{"./cards.js":"js/modules/cards.js"}],"js/modules/overview.js":[function(require,module,exports) {
@@ -238,7 +238,7 @@ function addIdToCardData(players) {
 
 function createCard(cardData) {
   var card = document.createElement('div');
-  card.className = 'card col';
+  card.className = 'card col border border-primary rounded';
   addCardContent(card, cardData);
 
   card.onclick = function (event) {

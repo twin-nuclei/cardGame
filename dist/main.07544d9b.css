@@ -4,34 +4,6 @@ body {
   margin: 2em auto;
 }
 
-button {
-  font-size: 1em;
-  padding: 15px 32px;
-}
-
-.first_level_box {
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #cfe8dc;
-  border: 2px solid #4fb9e3;
-}
-
-.card, .cardCopy {
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  background-color: #cfe8dc;
-  border: 2px solid #4fb9e3;
-}
-
-.selected {
-  border: 2px solid #f96048;
-}
-
-.card:hover {
-  background-color: #91d0f7;
-}
-
 .modal {
   display: none;
   position: fixed;
