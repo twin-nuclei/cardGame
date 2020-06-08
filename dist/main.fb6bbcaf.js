@@ -171,11 +171,11 @@ function createCardOverview(allCards) {
 function markSelectedCardAndRefreshOverview(event) {
   if (sessionStorage.getItem('selectedCardId')) {
     var previousSelectedCard = document.getElementById(sessionStorage.getItem('selectedCardId'));
-    previousSelectedCard.className = 'card';
+    previousSelectedCard.className = 'card col border border-primary rounded';
   }
 
   var selectedCard = document.getElementById(event.currentTarget.id);
-  selectedCard.className = 'card selected';
+  selectedCard.className = 'card col border border-warning rounded';
   sessionStorage.setItem('selectedCardId', event.currentTarget.id);
 }
 },{}],"js/modules/cards.js":[function(require,module,exports) {
