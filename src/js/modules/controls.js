@@ -15,7 +15,7 @@ function createControls(cards) {
 
 function createButtonColumn() {
     let buttonColumn = document.createElement('div');
-    buttonColumn.className = 'col-sm-4';
+    buttonColumn.className = 'col-sm-12 mt-3';
     return buttonColumn;
 }
 

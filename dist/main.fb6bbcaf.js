@@ -141,7 +141,7 @@ function displayInDetailView(event) {
   cardCopy.onclick = function () {};
 
   cardCopy.id = cards.length + 1;
-  cardCopy.className = 'cardCopy card-body col-sm-12 border border-primary rounded';
+  cardCopy.className = 'cardCopy card-body border border-primary rounded';
   details.appendChild(cardCopy);
 }
 },{"./cards.js":"js/modules/cards.js"}],"js/modules/overview.js":[function(require,module,exports) {
@@ -160,7 +160,10 @@ function createCardOverview(allCards) {
   overview[0].innerHTML = '';
   requestAnimationFrame(function () {
     cards.forEach(function (card) {
-      return overview[0].appendChild(card);
+      var cardColumn = document.createElement('div');
+      cardColumn.className = 'col-sm-4 mt-3';
+      cardColumn.appendChild(card);
+      overview[0].appendChild(cardColumn);
     });
   });
 }
@@ -168,11 +171,11 @@ function createCardOverview(allCards) {
 function markSelectedCardAndRefreshOverview(event) {
   if (sessionStorage.getItem('selectedCardId')) {
     var previousSelectedCard = document.getElementById(sessionStorage.getItem('selectedCardId'));
-    previousSelectedCard.className = 'card card card col-sm-4 border border-primary rounded';
+    previousSelectedCard.className = 'card h-100 border border-primary rounded';
   }
 
   var selectedCard = document.getElementById(event.currentTarget.id);
-  selectedCard.className = 'card card col-sm-4 border border-primary rounded';
+  selectedCard.className = 'card h-100 border border-primary rounded';
   sessionStorage.setItem('selectedCardId', event.currentTarget.id);
 }
 },{}],"js/modules/cards.js":[function(require,module,exports) {
@@ -235,7 +238,7 @@ function addIdToCardData(players) {
 
 function createCard(cardData) {
   var card = document.createElement('div');
-  card.className = 'card col-sm-4 border m-0 border-primary rounded';
+  card.className = 'card h-100 border border-primary rounded';
   addCardContent(card, cardData);
 
   card.onclick = function (event) {
@@ -331,7 +334,7 @@ function createControls(cards) {
 
 function createButtonColumn() {
   var buttonColumn = document.createElement('div');
-  buttonColumn.className = 'col-sm-4';
+  buttonColumn.className = 'col-sm-12 mt-3';
   return buttonColumn;
 }
 

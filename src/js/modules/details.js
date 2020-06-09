@@ -10,7 +10,7 @@ function displayInDetailView(event) {
     let cardCopy = createCard(selectedCard[0]);
     cardCopy.onclick = () => {};
     cardCopy.id = cards.length + 1;
-    cardCopy.className = 'cardCopy card-body col-sm-12 border border-primary rounded';
+    cardCopy.className = 'cardCopy card-body border border-primary rounded';
     details.appendChild(cardCopy);
 }
 
