@@ -4,7 +4,7 @@ let cardElements;
 
 function createControls(cards) {
     cardElements = cards;
-    let parent = document.getElementById('controls');
+    let parent = document.getElementById('controls-row');
     let ascendingButton = createAscendingButton();
     let descendingButton = createDescendingButton();
     let submitButton = createSubmitButton();
@@ -13,31 +13,43 @@ function createControls(cards) {
     parent.appendChild(submitButton);
 }
 
+function createButtonColumn() {
+    let buttonColumn = document.createElement('div');
+    buttonColumn.className = 'col-sm-4';
+    return buttonColumn;
+}
+
 function createAscendingButton() {
+    let buttonElement = createButtonColumn();
     let button = document.createElement('button');
     button.className = 'btn btn-secondary';
     button.innerHTML = "Sort Ascending";
     button.id = "sortAsc";
     button.onclick = createOverviewAscending;
-    return button;
+    buttonElement.appendChild(button);
+    return buttonElement;
 }
 
 function createDescendingButton() {
+    let buttonElement = createButtonColumn();
     let button = document.createElement('button');
     button.className = 'btn btn-secondary';
     button.innerHTML = "Sort Descending";
     button.id = "sortDesc";
     button.onclick = createOverViewDescending;
-    return button;
+    buttonElement.appendChild(button);
+    return buttonElement;
 }
 
 function createSubmitButton() {
+    let buttonElement = createButtonColumn();
     let button = document.createElement('button');
     button.className = 'btn btn-danger';
     button.innerHTML = "Submit";
     button.id = "submit";
     button.onclick = submit;
-    return button;
+    buttonElement.appendChild(button);
+    return buttonElement;
 }
 
 function createOverviewAscending() {

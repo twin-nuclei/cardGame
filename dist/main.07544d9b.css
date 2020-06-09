@@ -9915,6 +9915,10 @@ body {
   margin: 2em auto;
 }
 
+.controls {
+  min-height: 172px;
+}
+
 .close {
   color: #aaa;
   float: right;

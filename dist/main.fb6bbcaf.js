@@ -141,7 +141,7 @@ function displayInDetailView(event) {
   cardCopy.onclick = function () {};
 
   cardCopy.id = cards.length + 1;
-  cardCopy.className = 'cardCopy card-body col-12 border border-primary rounded';
+  cardCopy.className = 'cardCopy card-body col-sm-12 border border-primary rounded';
   details.appendChild(cardCopy);
 }
 },{"./cards.js":"js/modules/cards.js"}],"js/modules/overview.js":[function(require,module,exports) {
@@ -168,11 +168,11 @@ function createCardOverview(allCards) {
 function markSelectedCardAndRefreshOverview(event) {
   if (sessionStorage.getItem('selectedCardId')) {
     var previousSelectedCard = document.getElementById(sessionStorage.getItem('selectedCardId'));
-    previousSelectedCard.className = 'card card card col-4 border border-primary rounded';
+    previousSelectedCard.className = 'card card card col-sm-4 border border-primary rounded';
   }
 
   var selectedCard = document.getElementById(event.currentTarget.id);
-  selectedCard.className = 'card card col-4 border border-primary rounded';
+  selectedCard.className = 'card card col-sm-4 border border-primary rounded';
   sessionStorage.setItem('selectedCardId', event.currentTarget.id);
 }
 },{}],"js/modules/cards.js":[function(require,module,exports) {
@@ -235,7 +235,7 @@ function addIdToCardData(players) {
 
 function createCard(cardData) {
   var card = document.createElement('div');
-  card.className = 'card col-4 border border-primary rounded';
+  card.className = 'card col-sm-4 border m-0 border-primary rounded';
   addCardContent(card, cardData);
 
   card.onclick = function (event) {
@@ -320,7 +320,7 @@ var cardElements;
 
 function createControls(cards) {
   cardElements = cards;
-  var parent = document.getElementById('controls');
+  var parent = document.getElementById('controls-row');
   var ascendingButton = createAscendingButton();
   var descendingButton = createDescendingButton();
   var submitButton = createSubmitButton();
@@ -329,31 +329,43 @@ function createControls(cards) {
   parent.appendChild(submitButton);
 }
 
+function createButtonColumn() {
+  var buttonColumn = document.createElement('div');
+  buttonColumn.className = 'col-sm-4';
+  return buttonColumn;
+}
+
 function createAscendingButton() {
+  var buttonElement = createButtonColumn();
   var button = document.createElement('button');
   button.className = 'btn btn-secondary';
   button.innerHTML = "Sort Ascending";
   button.id = "sortAsc";
   button.onclick = createOverviewAscending;
-  return button;
+  buttonElement.appendChild(button);
+  return buttonElement;
 }
 
 function createDescendingButton() {
+  var buttonElement = createButtonColumn();
   var button = document.createElement('button');
   button.className = 'btn btn-secondary';
   button.innerHTML = "Sort Descending";
   button.id = "sortDesc";
   button.onclick = createOverViewDescending;
-  return button;
+  buttonElement.appendChild(button);
+  return buttonElement;
 }
 
 function createSubmitButton() {
+  var buttonElement = createButtonColumn();
   var button = document.createElement('button');
   button.className = 'btn btn-danger';
   button.innerHTML = "Submit";
   button.id = "submit";
   button.onclick = submit;
-  return button;
+  buttonElement.appendChild(button);
+  return buttonElement;
 }
 
 function createOverviewAscending() {
